@@ -1,0 +1,5 @@
+micronaut:
+  application:
+        name: log-alarm-service
+  config-client:
+    enabled: true

@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: log.alarm.service
+---
+testFramework: spock
+sourceLanguage: groovy

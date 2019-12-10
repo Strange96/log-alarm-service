@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "log-alarm-service"
+spec:
+  selector:
+    matchLabels:
+      app: "log-alarm-service"
+  template:
+    metadata:
+      labels:
+        app: "log-alarm-service"
+    spec:
+      containers:
+        - name: "log-alarm-service"
+          image: "gcr.io/log-alarm-service/jib-image"
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "log-alarm-service"
+spec:
+  selector:
+    app: "log-alarm-service"
+  type: LoadBalancer
+  ports:
+    - protocol: "TCP"
+      port: 8080

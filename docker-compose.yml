@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+  alarmservice:
+    #image:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: alarmservice
+    environment:
+      - MONGO_HOST = "mongodb://mongoalarm:27018"
+    ports:
+      - 8085:8085
+    depends_on:
+      - mongoalarm
+    networks:
+      - alarmservice
+
+  mongoalarm:
+    image: mongo
+    container_name: mongo
+    ports:
+      - 27018
+    networks:
+      - alarmservice
+    volumes:
+      - "mongoalarm:/data/db"
+
+networks:
+  alarmservice:
+
+volumes:
+  mongoalarm:

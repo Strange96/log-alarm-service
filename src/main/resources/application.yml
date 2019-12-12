@@ -11,6 +11,7 @@ mongodb:
 ---
 jackson:
   date-format: "yyyy-MM-dd'T'HH:mm:ss'Z'"
+  serialization-inclusion: "always"
 
 ---
 datasources.default: {}
@@ -18,10 +19,10 @@ datasources.default: {}
 hibernate:
   hbm2ddl:
     auto: update
-  cache:
-    queries: false
-    use_second_level_cache: true
-    use_query_cache: false
+  #cache:
+    # queries: false
+    # use_second_level_cache: true
+    # use_query_cache: false
     # region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
 dataSource:
   url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE

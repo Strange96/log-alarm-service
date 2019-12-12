@@ -5,9 +5,11 @@ import grails.gorm.annotation.Entity
 @Entity
 class AlarmModel {
 
-    String time
-
     String name
+
+    String severity
+
+    Date timestamp
 
     List<String> logIDs
 

@@ -9,7 +9,9 @@ class AlarmModel {
 
     String severity
 
-    Date timestamp
+    Long timestamp
+
+    String customerID
 
     List<String> logIDs
 

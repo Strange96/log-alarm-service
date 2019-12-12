@@ -2,7 +2,8 @@
 micronaut:
   application:
     name: log-alarm-service
-  port: 8085
+  server:
+    port: 8085 
 
 ---
 mongodb:

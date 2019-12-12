@@ -7,15 +7,15 @@ services:
       dockerfile: Dockerfile
     container_name: alarmservice
     environment:
-      - MONGO_HOST = "mongodb://mongoalarm:27018"
+      - MONGO_HOST = "mongodb://mongo:27018"
     ports:
       - 8085:8085
     depends_on:
-      - mongoalarm
+      - mongo
     networks:
       - alarmservice
 
-  mongoalarm:
+  mongo:
     image: mongo
     container_name: mongo
     ports:

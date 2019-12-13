@@ -13,4 +13,5 @@ class SaveAlarm {
 
     @JsonProperty("log_id")
     String logID
+
 }

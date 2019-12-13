@@ -23,6 +23,7 @@ configurations {
 dependencies {
     compileOnly platform("io.micronaut:micronaut-bom:$micronautVersion")
     compileOnly "io.micronaut:micronaut-inject-groovy"
+    compileOnly "org.grails.plugins:embedded-mongodb:1.0.2"
     implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
     implementation "io.micronaut.configuration:micronaut-mongo-reactive"
     implementation "io.micronaut:micronaut-runtime-groovy"
@@ -31,8 +32,8 @@ dependencies {
     implementation "io.micronaut:micronaut-http-client"
     implementation "io.micronaut.configuration:micronaut-mongo-gorm"
     implementation "io.micronaut.configuration:micronaut-jdbc-tomcat"
-    implementation "io.micronaut.configuration:micronaut-hibernate-validator"
-    implementation "io.micronaut.configuration:micronaut-hibernate-gorm"
+    //implementation "io.micronaut.configuration:micronaut-hibernate-validator"
+    //implementation "io.micronaut.configuration:micronaut-hibernate-gorm"
     implementation "io.micronaut.kubernetes:micronaut-kubernetes-discovery-client"
     implementation "io.micronaut:micronaut-http-server-netty"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
@@ -46,6 +47,7 @@ dependencies {
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "io.micronaut.test:micronaut-test-spock"
     testImplementation "io.micronaut.test:micronaut-test-junit5"
+    testImplementation "io.micronaut.configuration:micronaut-mongo-gorm"
     testImplementation "de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.1"
     testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.5.0"
 }

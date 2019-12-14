@@ -3,7 +3,7 @@ micronaut:
   application:
     name: log-alarm-service
   server:
-    port: 8085 
+    port: 8085
 
 ---
 mongodb:
@@ -34,4 +34,4 @@ dataSource:
   jmxExport: true
   driverClassName: org.h2.Driver
   username: sa
-  password: ''       
+  password: ''

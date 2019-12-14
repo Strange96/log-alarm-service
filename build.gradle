@@ -5,8 +5,6 @@ plugins {
     id "application"
 }
 
-
-
 version "0.1"
 group "log.alarm.service"
 
@@ -23,7 +21,6 @@ configurations {
 dependencies {
     compileOnly platform("io.micronaut:micronaut-bom:$micronautVersion")
     compileOnly "io.micronaut:micronaut-inject-groovy"
-    compileOnly "org.grails.plugins:embedded-mongodb:1.0.2"
     implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
     implementation "io.micronaut.configuration:micronaut-mongo-reactive"
     implementation "io.micronaut:micronaut-runtime-groovy"
@@ -47,9 +44,8 @@ dependencies {
     testImplementation "io.micronaut:micronaut-inject-groovy"
     testImplementation "io.micronaut.test:micronaut-test-spock"
     testImplementation "io.micronaut.test:micronaut-test-junit5"
-    testImplementation "io.micronaut.configuration:micronaut-mongo-gorm"
-    testImplementation "de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.1"
-    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.5.0"
+    testImplementation "de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0"
+    //testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.5.0"
 }
 
 test.classpath += configurations.developmentOnly

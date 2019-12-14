@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   alarmservice:
-    #image:
+    #image: docker.io/logops/alarm-service:1.0.0
     build:
       context: .
       dockerfile: Dockerfile

@@ -3,8 +3,3 @@ micronaut:
   server:
     port: -1
 ---
-environments:
-  test:
-    grails:
-      mongodb:
-        port: 27019

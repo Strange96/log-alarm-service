@@ -3,7 +3,6 @@ package log.alarm.service.service
 import grails.gorm.transactions.Transactional
 import log.alarm.service.domain.db.AlarmModel
 import log.alarm.service.domain.model.SaveAlarm
-
 import javax.inject.Singleton
 
 @Singleton

@@ -69,7 +69,7 @@ class AlarmControllerSpec extends Specification {
         HttpResponse responseNew = client.toBlocking().exchange(requestNew, Map)
 
         then:
-        responseNew.status == HttpStatus.CREATED
+        responseNew.status == HttpStatus.OK
         responseNew.body().name == expectedReply.name
         responseNew.body().severity == expectedReply.severity
         responseNew.body().status == expectedReply.status.toString()

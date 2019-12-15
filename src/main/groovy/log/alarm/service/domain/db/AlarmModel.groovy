@@ -21,6 +21,7 @@ class AlarmModel {
 
     Map toReturn() {
         Map ret = [
+                "id" : id,
                 "name" : name,
                 "severity" : severity,
                 "status" : status.toString(),
@@ -33,9 +34,15 @@ class AlarmModel {
 
     static enum Status {
 
-        NEW,
-        RESOLVED,
-        ESCALATED
+        NEW("NEW"),
+        RESOLVED("RESOLVED"),
+        ESCALATED("ESCALATED")
+
+        private String stat
+
+        Status(String status) {
+            this.stat = status.toUpperCase()
+        }
 
     }
 

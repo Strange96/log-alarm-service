@@ -1,10 +1,10 @@
 version: '3.3'
 services:
   alarmservice:
-    #image: docker.io/logops/alarm-service:1.0.0
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: docker.io/logops/${ALARM_SERVICE_IMAGE:-alarm-service}:${ALARM_SERVICE_VERSION:-1.0.0}
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
     container_name: alarmservice
     environment:
       MONGO_HOST: mongo

@@ -49,14 +49,14 @@ class AlarmService {
     }
 
     ServiceResult getByCustomerAndStatus(@NotNull @NotBlank String customerID, @NotNull @NotBlank String status) {
-        if (!AlarmModel.Status.values().contains(status.toUpperCase())) {
+        if (!AlarmModel.Status.values().any { it.toString().equalsIgnoreCase(status) }) {
             return new ServiceResult(code: 400)
         }
-        AlarmModel.Status stat = AlarmModel.Status.valueOf(status)
+        AlarmModel.Status stat = AlarmModel.Status.valueOf(status.toUpperCase())
         List<AlarmModel> allFound = AlarmModel.findAllByCustomerIDAndStatus(customerID, stat)
 
         if(!allFound) {
-            return new ServiceResult(code: 200, body: ["num_results" : allFound.size(), "content" : null])
+            return new ServiceResult(code: 200, body: ["num_results" : allFound.size(), "content" : []])
         }
 
         List<Map> returnList = allFound.collect { it.toReturn() }
@@ -67,7 +67,7 @@ class AlarmService {
         List<AlarmModel> allFound = AlarmModel.findAllByCustomerIDAndSeverity(customerID, severity)
 
         if(!allFound) {
-            return new ServiceResult(code: 200, body: ["num_results" : allFound.size(), "content" : null])
+            return new ServiceResult(code: 200, body: ["num_results" : allFound.size(), "content" : []])
         }
 
         List<Map> returnList = allFound.collect { it.toReturn() }
@@ -78,7 +78,7 @@ class AlarmService {
         List<AlarmModel> allForCustomer = AlarmModel.findAllByCustomerID(customerID)
 
         if(!allForCustomer) {
-            return new ServiceResult(code: 200, body: ["num_results" : allForCustomer.size(), "content" : null])
+            return new ServiceResult(code: 200, body: ["num_results" : allForCustomer.size(), "content" : []])
         }
 
         List<Map> returnList = allForCustomer.collect { it.toReturn() }
@@ -108,7 +108,7 @@ class AlarmService {
     }
 
     ServiceResult updateAlarmByID(@NotNull Long alarmID, UpdateAlarm body) {
-        if (!AlarmModel.Status.values().contains(body.status.toUpperCase())) {
+        if (!AlarmModel.Status.values().any { it.toString().equalsIgnoreCase(body.status) }) {
             return new ServiceResult(code: 400)
         }
 
@@ -118,7 +118,7 @@ class AlarmService {
             return new ServiceResult(code: 404)
         }
 
-        foundAlarm.status = AlarmModel.Status.valueOf(body.status)
+        foundAlarm.status = AlarmModel.Status.valueOf(body.status.toUpperCase())
         foundAlarm.comment = body.comment
 
         if (foundAlarm.hasErrors()) {
